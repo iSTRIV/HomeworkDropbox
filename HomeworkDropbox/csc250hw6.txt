@@ -1,0 +1,112 @@
+package csc250hw6;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class Driver 
+{
+	public static void main(String[] args) throws FileNotFoundException
+	{
+		BibleBook bb1 = new BibleBook("Matthew", 26, "Chapter Summary");
+		BibleBook bb2 = new BibleBook("Acts", 28, "Chapter Summary");
+		BibleBook bb3 = new BibleBook("Romans", 15, "Chapter Summary");
+		
+		bb1.display();
+		bb2.display();
+		bb3.display();
+		
+		Scanner input = new Scanner(new File(System.getProperty("user.dir") + "/src/input.dat"));
+		while(input.hasNext())
+		{
+			BibleBook a = new BibleBook(input.nextLine());
+		}
+		input.close();
+	}
+}
+
+
+
+
+
+Matthew,28, An Account of Jesus' life death and resurrection.
+Mark,16, Account of Jesus' earthly ministry.
+Luke,24, Account of Jesus' life.
+John,21, John lists stories of signs and miracles
+Acts,28, Conversion of Paul and the spread of Christianity
+Romans,16, Paul summarizes the gospel.
+1 Corinthians,16, Paul writes first letter to Corinth.
+2 Corinthians,13, Paul writes second letter to Corinth.
+Galations,6, Paul writes a heated letter to the galations.
+Epheshians,6, Paul teaches the Ephesians of grace, peace, and love.
+Philipians,4, Paul teaches of joy.
+Colossians,4, Encouraging letter.
+1 Thessalonians,5, How to walk in Christ.
+2 Thessalonians,3, Standing firm in the faith.
+1 Timothy,6, Preaching the word.
+2 Timothy,4, Encouraging letter.
+Titus,3, How to lead.
+Philemon,1, Letter of recommendation or advice.
+Hebrews,13, Letter of encouragement.
+James,5, How to live one's faith.
+1 Peter,5, Letter of encouragement.
+2 Peter,3, False teachers.
+1 John,5, Loving one another.
+2 John,1, Truth Love and Obedience.
+3 John,1, Christian fellowship.
+Jude,1, Letter of encouragement.
+Revelation,22, John's vision.
+
+
+
+
+
+package csc250hw6;
+
+public class BibleBook 
+{
+	private String name;
+	private int number_of_chapters;
+	private String summary;
+	
+	public BibleBook(String name, int number_of_chapters, String summary)
+	{
+		
+		this.name = name;
+		this.number_of_chapters = number_of_chapters;
+		this.summary = summary;
+	}
+	
+	public BibleBook(String commaDelimited)
+	{
+		String[] parts = commaDelimited.split(",");
+		this.name = parts[0];
+		this.number_of_chapters = Integer.parseInt(parts[1]);
+		this.summary = parts[2];
+	}
+	
+	public void display()
+	{
+		System.out.printf("Book Name: %s Number of Chapters: %f Summary: %s", this.name, this.number_of_chapters, this.summary);
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getNumber_of_chapters() {
+		return number_of_chapters;
+	}
+	public void setNumber_of_chapters(int number_of_chapters) {
+		this.number_of_chapters = number_of_chapters;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	
+}
